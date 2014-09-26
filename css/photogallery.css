@@ -1,0 +1,76 @@
+#photoViewer{
+    display:none;
+    z-index:1000;
+    position:fixed;
+    /*.position:absolute;  /* IE don't know fixed value */
+    top:0px;
+    left:0px;
+    width:100%;
+    min-height:600px;
+    text-align:center;
+    margin:0px;
+    padding:0px;
+    background-color: rgba(0,0,0, 0.9);
+}
+
+
+#photoViewer img{
+    margin:0px;
+}
+.exif{
+  float:right; 
+  margin: 8px; 
+  color: white; 
+  font-size: small; 
+  max-width: 300px;
+  background-color: rgba(100,100,100, 0.8); 
+  border: 1px solid grey; 
+  padding: 2px; 
+  text-align: left;
+}
+.exif th{
+  min-width: 120px;
+  vertical-align: top;
+  text-align: right;
+}
+.exif a{
+  color: #a0a0ff;
+}
+
+
+.photogallery{
+    margin-top:6px;
+    position:relative;
+}
+.photogallery .photo{
+    text-align:left;
+    position:absolute;
+    font-size:small;
+    overflow: hidden;
+    /* display: table-cell;*/
+    vertical-align: top;
+    cursor:pointer;
+    .cursor:Hand; /* for old IE*/
+}
+.photogallery .photo img{
+  border:0;
+  margin:0px;
+  }
+  
+.thumbnailTitle{
+  font-weight: bold;
+  background-color: rgba(255,255,255, 0.8);
+  width: 100%;
+}
+.thumbnailTitle div{
+  padding: 1px 6px 1px 6px;
+}
+.thumbnailDescription{
+  background-color: rgba(255,255,255, 0.8);
+  width: 100%;
+}
+.thumbnailDescription div{
+  padding: 1px 6px 1px 6px;
+}
+  
+  
