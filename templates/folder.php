@@ -43,7 +43,7 @@
 
     <?php if ($album->description() != null){ ?><div><?php echo $album->description() ?></div><?php } ?>
 
-    <?php if ($displayBack){ ?><div style="margin:10px;"><a href="<?php echo $gallery->relativeRoot() ?>">back to list of albums</a></div><?php } ?>
+    <?php if ($displayBack){ ?><div style="margin:10px;"><a href="/<?php echo $gallery->relativeRoot() ?>">back to list of albums</a></div><?php } ?>
 
 
     <div class="photogallery" id="album">
