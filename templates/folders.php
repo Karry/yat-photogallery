@@ -105,7 +105,8 @@
       You need <strong><a href="http://php.net/manual/en/book.image.php">php5-gd</a></strong> and 
       <strong><a href="http://httpd.apache.org/docs/current/mod/mod_rewrite.html">mod_rewrite</a></strong> extensions 
       enabled and configured on your server.
-      For installatin, just upload photogallery files to some directory on your web server, it includes 
+      For installatin, just upload photogallery files to some directory on your web server and create <strong>cache</strong>
+      subdirectory with write permissions for apache user. Repository includes 
       <strong>.htaccess</strong> configuration, so everything should work out of the box.
     </p>
     
