@@ -105,7 +105,7 @@
       You need <strong><a href="http://php.net/manual/en/book.image.php">php5-gd</a></strong> and 
       <strong><a href="http://httpd.apache.org/docs/current/mod/mod_rewrite.html">mod_rewrite</a></strong> extensions 
       enabled and configured on your server.
-      For installatin, just upload photogallery files to some directory on your web server and create <strong>cache</strong>
+      For installation, just upload photogallery files to some directory on your web server and create <strong>cache</strong>
       subdirectory with write permissions for apache user. Repository includes 
       <strong>.htaccess</strong> configuration, so everything should work out of the box.
     </p>
@@ -119,10 +119,10 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([a-zA-Z0-9\-\/\_\.()!]*)$	index.php [L]</pre>
     
     <p>
-      For creating new photo album, create directory in <code>photos</code> sub-directory and upload <strong>jpeg</strong> 
+      For creating new photo album, create a new sub-directory in <code>photos</code> and upload <strong>jpeg</strong> 
       images into it. Title and description are read from <strong>XMP</strong> metadata stored in photo. 
       For editing these field can be used some photo editor/manager - for example <a href="https://www.digikam.org/">DigiKam</a>.
-      Album is named by its subdirectory. But you can override this default value by uploading some <code>album.xml</code> file.
+      Album is named by its subdirectory. But you can override this default value by uploading some <code>album.xml</code> file into album dir.
     </p>
     
     <pre><b>&lt;?xml</b> version=&quot;1.0&quot; encoding=&quot;utf-8&quot;<b>?&gt;</b>
