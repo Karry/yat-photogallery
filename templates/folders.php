@@ -137,5 +137,6 @@ RewriteRule ^([a-zA-Z0-9\-\/\_\.()!]*)$	index.php [L]</pre>
   </div>
   
 </div>
+<?php if (file_exists("templates/visitcounter.php")){ require_once 'templates/visitcounter.php'; } ?>
 </body>
 </html>

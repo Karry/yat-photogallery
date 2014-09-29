@@ -32,5 +32,6 @@
 <div id="page-wrapper">
   <h1>404</h1>
 </div>
+<?php if (file_exists("templates/visitcounter.php")){ require_once 'templates/visitcounter.php'; } ?>
 </body>
 </html>

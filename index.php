@@ -38,14 +38,15 @@ $gallery = new Photogallery(
 $album = $gallery->getAlbumForUrl($path); 
 if ($album == null){
   if ($path == $baseUrl){
-    $pageTitle = "Photogallery";
+    $pageTitle = "YAT Photogallery";
     require 'templates/folders.php';
   }else{
+    $pageTitle = "Page Not Found | YAT Photogallery";
     header("HTTP/1.0 404 Not Found");
     require 'templates/404.php';    
   }
 }else{
-  $pageTitle = $album->name() . " | Photogallery";
+  $pageTitle = $album->name() . " | YAT Photogallery";
   $displayBack = true;
   require 'templates/folder.php';    
 }

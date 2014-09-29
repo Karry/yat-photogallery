@@ -136,5 +136,6 @@
 </div>  
   
 </div>
+<?php if (file_exists("templates/visitcounter.php")){ require_once 'templates/visitcounter.php'; } ?>
 </body>
 </html>
