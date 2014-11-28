@@ -402,6 +402,7 @@ class Photogallery {
   }
   
   function getAlbumForUrl($url){
+    $url = eregi_replace("\\?[^/]*$", "", $url);
     foreach($this->albums as $album){
       if ($album->url() == $url)
         return $album;
