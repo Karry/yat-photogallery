@@ -72,5 +72,30 @@
 .thumbnailDescription div{
   padding: 1px 6px 1px 6px;
 }
+.clickable{
+  cursor: pointer;
+}  
+.thumbnailLineWrapper{
+  height: 80px;
+  overflow: hidden;
+  position: relative;
+}
+.thumbnailLineWrapper .gradient{
+  position: absolute;
+  width: 60px;
+  height: 80px;
+  top: 0px;
+  right: 0px;
   
+  background: -webkit-linear-gradient(left,rgba(255,255,255,0),rgba(255,255,255,1)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(right,rgba(255,255,255,0),rgba(255,255,255,1)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(right,rgba(255,255,255,0),rgba(255,255,255,1)); /*Fx 3.6-15*/
+  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1)); /*Standard*/   
+}
+.thumbnailLineWrapper .thumbnailLine{
+  width: 200%;
+  height: 80px;
+  /*line-break: loose;
+  white-space: pre-line;*/
+}
   

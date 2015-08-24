@@ -67,26 +67,32 @@
         <div class="folder">
             <h2><a href="<?php echo $album->url() ?>" ><?php echo $album->name() ?></a></h2>
             <p class="comment"><?php echo $album->description() ?></p>
-            <div class="photos" id="album<?php echo $albumIndex ?>" onclick="window.location = '<?php echo $album->url() ?>';">
-              <script type="text/javascript">
-                var gallery = new Photogallery("album<?php echo $albumIndex ?>", false, "<?php echo $gallery->relativeRoot()?>", "s");
-                <?php
-                $photos = $album->photos();
-                for ($i = 0; $i < sizeof($photos) && $i < 7; $i++){
-                  $photo = $photos[$i];
-                  ?>
-                  gallery.addPhoto("<?php echo $photo->url() ?>", 
-                      "<?php echo htmlspecialchars(trim($photo->name()))?>", 
-                      "<?php htmlspecialchars(trim($photo->description()))?>", 
-                      <?php echo $photo->jsonSizes()?>, 
-                      {}); 
-                  <?php /*<img src="{$photo->url()}" 
-                         alt="{$photo->name()|escape}" 
-                         width="200" 
-                         height="150" />
-                         */ ?>
-                <?php } ?>
-              </script>
+            
+            <div class="thumbnailLineWrapper clickable" onclick="window.location = '<?php echo $album->url() ?>';">
+              <div class="photos thumbnailLine" id="album<?php echo $albumIndex ?>" onclick="window.location = '<?php echo $album->url() ?>';">
+                <script type="text/javascript">
+                  var gallery = new Photogallery("album<?php echo $albumIndex ?>", Photogallery.STYLE_LINE, 
+                                                 "<?php echo $gallery->relativeRoot()?>", "s");
+
+                  <?php
+                  $photos = $album->photos();
+                  for ($i = 0; $i < sizeof($photos) && $i < 11; $i++){
+                    $photo = $photos[$i];
+                    ?>
+                    gallery.addPhoto("<?php echo $photo->url() ?>", 
+                        "<?php echo htmlspecialchars(trim($photo->name()))?>", 
+                        "<?php htmlspecialchars(trim($photo->description()))?>", 
+                        <?php echo $photo->jsonSizes()?>, 
+                        {}); 
+                    <?php /*<img src="{$photo->url()}" 
+                           alt="{$photo->name()|escape}" 
+                           width="200" 
+                           height="150" />
+                           */ ?>
+                  <?php } ?>
+                </script>
+              </div>
+              <div class="gradient"></div>
             </div>
             <div class="summary"><?php echo sizeof($photos) ?> photos in total</div>
         </div>

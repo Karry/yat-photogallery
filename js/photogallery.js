@@ -171,7 +171,13 @@ Photogallery_i18n.prototype.METRES_ABOVE_SEA_LEVEL = "m.a.s.l."; // http://en.wi
 Photogallery_i18n.prototype.FOCAL_LENGTH = "Focal Length";
 Photogallery_i18n.prototype.FOCAL_IN_35MM_FILM = "35 mm film equivalent:";
 
-Photogallery = function(elemId, tiling, relativeRoot, size, slider, sliderWrapper, name, description, exif, animationSpeed, thumbnailWidth){
+
+
+Photogallery = function(elemId, style, relativeRoot, size, slider, sliderWrapper, name, 
+  description, exif, animationSpeed, thumbnailWidth){
+  
+  if (typeof style === 'undefined')
+    style = Photogallery.STYLE_NONE;
   if (typeof size === 'undefined')
     size = "m";
   if (typeof animationSpeed === 'undefined')
@@ -206,8 +212,10 @@ Photogallery = function(elemId, tiling, relativeRoot, size, slider, sliderWrappe
       inst.description = $("#" + description);
       inst.exif = $("#" + exif);
     }
-    if (tiling)
-      inst.tillingRender(inst.thumbnailsWrapper);
+    if (style == Photogallery.STYLE_TILING)
+      inst.tilingRender(inst.thumbnailsWrapper);
+    else if (style == Photogallery.STYLE_LINE)
+      inst.renderLine(inst.thumbnailsWrapper);
     else
       inst.render(inst.thumbnailsWrapper);
     
@@ -216,6 +224,10 @@ Photogallery = function(elemId, tiling, relativeRoot, size, slider, sliderWrappe
     });
   });
 };
+
+Photogallery.STYLE_TILING = 'TILING';
+Photogallery.STYLE_LINE = 'LINE';
+Photogallery.STYLE_NONE = 'NONE';
 
 Photogallery.prototype.addPhoto = function(url, name, description, sizes, metadata){
   this.photos.push({url: url, name: name, description: description, sizes: sizes, metadata: metadata});
@@ -314,11 +326,35 @@ Photogallery.prototype.loadPhoto = function(photo, preloadNearby){
 };
 
 Photogallery.prototype.render = function(elem){
-   for (var i in this.photos){
+  for (var i in this.photos){
     var photo = this.photos[i];
     photo.index = i;
     var sizeArgs = this.sizeArgs(photo, this.size);
     var thumbnail = $("<img src=\"" + this.relativeRoot + "/thumbnail.php?path=" + photo.url + "&size="+this.size+"\" alt=\"" + photo.name + "\" "+sizeArgs+" />");
+    elem.append(thumbnail);
+  }
+};
+
+Photogallery.prototype.renderLine = function(elem){
+  // elem have to setup fixed height
+  var height = elem.height();
+  for (var i in this.photos){
+    var photo = this.photos[i];
+    photo.index = i;
+    var size = this.size;
+    var sizeArgs = "height=" + height;
+    for (var si in photo.sizes){
+      var sizeObj = photo.sizes[si];
+      if (sizeObj.height >= (0.8 * height)){
+        size = si;
+        var scale = height / sizeObj.height;
+        sizeArgs = "height=\"" + Math.round(height) + "\" width=\"" + Math.round(scale * sizeObj.width) + "\"";
+        break;
+      }
+    }
+    //var sizeArgs = this.sizeArgs(photo, this.size);
+
+    var thumbnail = $("<img src=\"" + this.relativeRoot + "/thumbnail.php?path=" + photo.url + "&size="+si+"\" alt=\"" + photo.name + "\" "+sizeArgs+" />");
     elem.append(thumbnail);
   }
 };
@@ -349,7 +385,7 @@ Photogallery.prototype.occupyCells = function(usedCells, column, line, horizCell
   return true;
 };
 
-Photogallery.prototype.tillingRender = function(elem){
+Photogallery.prototype.tilingRender = function(elem){
   // clear content for browsers with disabled javascript
   elem.html("");
   

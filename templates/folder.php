@@ -63,7 +63,10 @@
       <!-- javascript photogallery -->
       <script type="text/javascript">
 
-        var gallery = new Photogallery("album", true, "<?php echo $gallery->relativeRoot() ?>", "m", "slider", "photoViewer", "name", "description", "exiftable");
+        var gallery = new Photogallery("album", Photogallery.STYLE_TILING, 
+                                       "<?php echo $gallery->relativeRoot() ?>", "m", "slider", "photoViewer", 
+                                       "name", "description", "exiftable");
+                               
         <?php foreach ($album->photos() as $photo){ ?>
           gallery.addPhoto("<?php echo $photo->url()?>", 
                     "<?php echo htmlspecialchars(trim($photo->name()))?>", 
