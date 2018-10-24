@@ -19,11 +19,28 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA 
  */
 
-$baseDir = eregi_replace("/[^/]*$", "", $_SERVER["SCRIPT_FILENAME"]);
+////////////////////////////////////////////////////////////////////////////////
+// Load libs
+////////////////////////////////////////////////////////////////////////////////
+
+function loadOrDie($extension){
+  if (!extension_loaded($extension)){
+    if (!(function_exists("dl") && dl($extension))){
+      header("Content-Type: text/plain; charset=UTF-8;");
+      echo "Can't load php extension ".$extension."\n";
+      die();
+    }
+  }
+}
+loadOrDie("gd");
+loadOrDie("json");
+loadOrDie("xml");
+
+$baseDir = preg_replace('/\/[^\/]*$/i', "", $_SERVER["SCRIPT_FILENAME"]);
 $webRootDir = $_SERVER["DOCUMENT_ROOT"];
 $baseUrl = substr($baseDir, strlen($webRootDir));
 // remove last "/" if present
-$path = eregi_replace("/$", "", array_key_exists('REQUEST_URI', $_SERVER) ? $_SERVER['REQUEST_URI'] : "");
+$path = preg_replace('/\/$/i', "", array_key_exists('REQUEST_URI', $_SERVER) ? $_SERVER['REQUEST_URI'] : "");
 
 require_once $baseDir . DIRECTORY_SEPARATOR . "photogallery.class.php";
 

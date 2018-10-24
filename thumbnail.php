@@ -26,7 +26,7 @@ if ((!array_key_exists('path',$_GET)) || (!array_key_exists('size',$_GET)) ){
   die("Not enough parameters!");
 }
 
-$baseDir = eregi_replace("/[^/]*$", "", $_SERVER["SCRIPT_FILENAME"]);
+$baseDir = preg_replace('/\/[^\/]*$/i', "", $_SERVER["SCRIPT_FILENAME"]);
 $webRootDir = $_SERVER["DOCUMENT_ROOT"];
 $baseUrl = substr($baseDir, strlen($webRootDir));
 
@@ -98,7 +98,7 @@ $fullHeight = ImageSY( $img );
 /*
 if (($orientation == 1) && ($fullWidth <=  $rectangle->width) && ($fullHeight <=  $rectangle->height)) {
   ImageDestroy($img);
-  // it is not necssary to resample
+  // it is not necessary to resample
   header("Content-Type: image/jpeg");
   header("Expires: ".GMDate("D, d M Y H:i:s", time() + ONE_HOUR)." GMT");
   readfile($originalFile);
