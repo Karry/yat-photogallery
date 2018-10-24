@@ -108,9 +108,14 @@
     <h3>Installation (Apache web server)</h3>
     
     <p>
-      You need <strong><a href="http://php.net/manual/en/book.image.php">php-gd</a></strong> and 
-      <strong><a href="http://httpd.apache.org/docs/current/mod/mod_rewrite.html">mod_rewrite</a></strong> extensions 
-      enabled and configured on your server.
+      You need to have configured php and 
+      <strong><a href="http://httpd.apache.org/docs/current/mod/mod_rewrite.html">mod_rewrite</a></strong> 
+      for your Apache and 
+      <strong><a href="http://php.net/manual/en/book.image.php">gd</a></strong>, 
+      <strong><a href="http://php.net/manual/en/book.xml.php">xml</a></strong> and
+      <strong><a href="http://php.net/manual/en/book.json.php">json</a></strong>
+      extensions for php.
+      
       For installation, just upload photogallery files to some directory on your web server and create <strong>cache</strong>
       subdirectory with write permissions for apache user. Repository includes 
       <strong>.htaccess</strong> configuration, so everything should work out of the box.
