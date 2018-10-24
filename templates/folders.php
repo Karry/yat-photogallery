@@ -108,7 +108,7 @@
     <h3>Installation (Apache web server)</h3>
     
     <p>
-      You need <strong><a href="http://php.net/manual/en/book.image.php">php5-gd</a></strong> and 
+      You need <strong><a href="http://php.net/manual/en/book.image.php">php-gd</a></strong> and 
       <strong><a href="http://httpd.apache.org/docs/current/mod/mod_rewrite.html">mod_rewrite</a></strong> extensions 
       enabled and configured on your server.
       For installation, just upload photogallery files to some directory on your web server and create <strong>cache</strong>
