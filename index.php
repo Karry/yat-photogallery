@@ -36,7 +36,7 @@ loadOrDie("gd");
 loadOrDie("json");
 loadOrDie("xml");
 
-$baseDir = preg_replace('/[^\/]*$/i', "", $_SERVER["SCRIPT_FILENAME"]);
+$baseDir = preg_replace('/\/[^\/]*$/i', "", $_SERVER["SCRIPT_FILENAME"]);
 $webRootDir = $_SERVER["DOCUMENT_ROOT"];
 $baseUrl = substr($baseDir, strlen($webRootDir));
 // remove last "/" if present
